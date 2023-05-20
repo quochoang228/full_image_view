@@ -30,12 +30,14 @@ class FullscreenUrlImgViewer extends StatefulWidget {
     this.index = 0,
     this.label,
     this.iconClose,
+    this.backgroudColor,
   }) : super(key: key);
 
   final List<String> urls;
   final int index;
   final String? label;
   final Widget? iconClose;
+  final Color? backgroudColor;
 
   static const double imageScale = 2.5;
 
@@ -87,7 +89,7 @@ class _FullscreenUrlImgViewerState extends State<FullscreenUrlImgViewer> {
     );
 
     return Container(
-      color: Colors.white,
+      color: widget.backgroudColor ?? Colors.white,
       child: Stack(
         children: [
           Positioned.fill(child: content),
@@ -103,13 +105,6 @@ class _FullscreenUrlImgViewerState extends State<FullscreenUrlImgViewer> {
               ),
             ),
           ),
-
-          // AppBarUI(
-          //   title: '',
-          //   backgroundColor: AppColors.vTransparent,
-          //   leadingWidget: MyAssets.icons.iconClose.svg(),
-          // ),
-          // AppHeader(onBack: _handleBackPressed, isTransparent: true),
         ],
       ),
     );
@@ -152,7 +147,7 @@ class _ViewerState extends State<_Viewer> with SingleTickerProviderStateMixin {
           tag: widget.url,
           child: AppImage(
             image: NetworkImage(
-              // 'https://salt.tikicdn.com/cache/750x750/ts/product/45/77/e4/c67baee67b5647b4bbf7d4eb7135b899.jpg.webp',
+             
               widget.url,
             ),
             fit: BoxFit.contain,
